@@ -1,6 +1,12 @@
 ClientHandler
+ClientHandler-dbg
 DatabaseConnector
+DatabaseConnector-dbg
 Logger
+Logger-dbg
 main
+main-dbg
 Utils
+Utils-dbg
 VectorProcessor
+VectorProcessor-dbg
