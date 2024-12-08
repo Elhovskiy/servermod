@@ -1,17 +1,20 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17 -I./src
+CXXFLAGS = -Wall -std=c++17 -I.
 LDFLAGS = -lssl -lcrypto
 
-SRC = main.cpp ClientHandler.cpp VectorProcessor.cpp Logger.cpp Utils.cpp DatabaseConnector.cpp
-OBJ = $(SRC:.cpp=.o)
+OBJS = main.o server.o client_handler.o logger.o database.o hashing.o vector_processor.o
 
-TARGET = server
+all: server
 
-all: $(TARGET)
+server: $(OBJS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
 
-$(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f *.o server
+
+
+
 

@@ -1,8 +1,8 @@
-#include "DatabaseConnector.h"
+#include "database.h"
 #include <fstream>
 #include <stdexcept>
 
-std::unordered_map<std::string, std::string> DatabaseConnector::loadClientDatabase(const std::string& dbFile) {
+std::unordered_map<std::string, std::string> loadClientDatabase(const std::string &dbFile) {
     std::unordered_map<std::string, std::string> clients;
     std::ifstream inFile(dbFile);
     if (!inFile.is_open()) {

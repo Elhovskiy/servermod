@@ -1,4 +1,4 @@
-#include "VectorProcessor.h"
+#include "vector_processor.h"
 #include <limits>
 
 int16_t VectorProcessor::computeSum(const std::vector<int16_t>& vector) {

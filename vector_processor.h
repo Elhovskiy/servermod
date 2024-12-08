@@ -9,4 +9,5 @@ public:
     int16_t computeSum(const std::vector<int16_t>& vector);
 };
 
-#endif
+#endif // VECTOR_PROCESSOR_H
+
