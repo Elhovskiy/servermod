@@ -1,3 +1,9 @@
+/**
+ * @file client_handler.cpp
+ * @brief Обработчик клиентов для сервера.
+ *
+ * Этот файл содержит функцию обработки клиента, включая аутентификацию и обработку векторов.
+ */
 #include "client_handler.h"
 #include "logger.h"
 #include "hashing.h"
@@ -8,7 +14,15 @@
 #include <stdexcept>
 #include <sys/socket.h>
 
-
+/**
+ * @brief Обрабатывает клиентский запрос.
+ * 
+ * Выполняет аутентификацию клиента, отправку соли, проверку хэша, а затем вычисление суммы элементов вектора.
+ * 
+ * @param clientSocket Сокет клиента для связи.
+ * @param clients Словарь клиентов с хэшами.
+ * @param logFile Путь к файлу журнала для записи ошибок.
+ */
 void handleClient(int clientSocket, const std::unordered_map<std::string, std::string> &clients, const std::string &logFile) {
     try {
         char buffer[1024];
@@ -59,3 +73,4 @@ void handleClient(int clientSocket, const std::unordered_map<std::string, std::s
     }
     close(clientSocket);
 }
+

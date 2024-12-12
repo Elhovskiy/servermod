@@ -1,7 +1,22 @@
+/**
+ * @file database.cpp
+ * @brief Загрузка базы данных клиентов.
+ * 
+ * Этот файл содержит функцию для загрузки базы данных клиентов из файла.
+ */
 #include "database.h"
 #include <fstream>
 #include <stdexcept>
 
+/**
+ * @brief Загружает базу данных клиентов из файла.
+ * 
+ * Функция читает файл и извлекает идентификаторы и хэши клиентов.
+ * 
+ * @param dbFile Путь к файлу базы данных.
+ * @return Словарь клиентов с их хэшами.
+ * @throws std::runtime_error Если не удается открыть файл базы данных.
+ */
 std::unordered_map<std::string, std::string> loadClientDatabase(const std::string &dbFile) {
     std::unordered_map<std::string, std::string> clients;
     std::ifstream inFile(dbFile);
@@ -19,3 +34,4 @@ std::unordered_map<std::string, std::string> loadClientDatabase(const std::strin
     }
     return clients;
 }
+

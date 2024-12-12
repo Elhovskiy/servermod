@@ -1,3 +1,9 @@
+/**
+ * @file server.cpp
+ * @brief Сервер, обрабатывающий запросы клиентов.
+ * 
+ * Этот файл содержит функцию для запуска сервера и обработки запросов клиентов.
+ */
 #include "server.h"
 #include "logger.h"
 #include "client_handler.h"
@@ -7,6 +13,18 @@
 #include <stdexcept>
 #include <iostream>
 
+/**
+ * @brief Запускает сервер.
+ * 
+ * Создает сокет, привязывает его к адресу и порту, и начинает слушать входящие соединения.
+ * Принимает подключения и передает их для обработки функции handleClient.
+ * 
+ * @param clientDBFile Путь к файлу базы данных клиентов.
+ * @param logFile Путь к файлу журнала.
+ * @param port Порт для прослушивания (по умолчанию 22852).
+ * @return Код возврата.
+ * @throws std::runtime_error При ошибках с сокетами или подключениями.
+ */
 int startServer(const std::string &clientDBFile, const std::string &logFile, int port) {
     auto clients = loadClientDatabase(clientDBFile);
 
@@ -38,3 +56,4 @@ int startServer(const std::string &clientDBFile, const std::string &logFile, int
     close(serverSocket);
     return 0;
 }
+

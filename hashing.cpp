@@ -1,9 +1,22 @@
+/**
+ * @file hashing.cpp
+ * @brief Функции для работы с хэшированием.
+ * 
+ * Этот файл содержит функции для генерации соли и хэширования данных.
+ */
 #include "hashing.h"
 #include <sstream>
 #include <iomanip>
 #include <openssl/sha.h>
 #include <cstdlib>
 
+/**
+ * @brief Генерирует случайную соль.
+ * 
+ * Генерирует случайную 64-битную соль в формате шестнадцатеричной строки.
+ * 
+ * @return Строка, представляющая соль.
+ */
 std::string generateSalt() {
     uint64_t salt = static_cast<uint64_t>(rand()) << 32 | rand();
     std::stringstream ss;
@@ -11,6 +24,12 @@ std::string generateSalt() {
     return ss.str();
 }
 
+/**
+ * @brief Хэширует строку с использованием алгоритма SHA-256.
+ * 
+ * @param input Строка для хэширования.
+ * @return Хэш строки в шестнадцатеричном формате.
+ */
 std::string hashWithSHA256(const std::string &input) {
     unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256(reinterpret_cast<const unsigned char *>(input.c_str()), input.size(), hash);
@@ -20,3 +39,4 @@ std::string hashWithSHA256(const std::string &input) {
     }
     return ss.str();
 }
+
